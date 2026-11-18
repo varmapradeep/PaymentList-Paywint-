@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h4>Payment List</h4>
+        </div>
+        <div class="col-6">
+            <div class="searchbox">
+                 <form [formGroup]="searchform">
+               <input type="search" formControlName="searchdata" placeholder="Search Here..." class="form-control">
+
+               </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Method</th>
+                    <th>Created</th>
+                </tr>
+              
+            
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let data of paymnetlist; let i = index">
+                    <tr>
+                        <td>{{ data.reference }}</td>
+                        <td>{{ data.customerName }}</td>
+                        <td>{{ data.amount | currency:data.currency }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="{'bg-success': data.status === 'completed', 'bg-warning': data.status === 'pending', 'bg-danger': data.status === 'failed', 'bg-secondary': data.status === 'refunded'}">{{ data.status }}</span>
+                        </td>
+                        <td>{{ data.method === 'ach' ? 'ACH' : data.method === 'wire' ? 'Wire' : data.method === 'card' ? 'Card' : 'Check' }}</td>
+                        <td>{{ data.createdAt | date:'d MMM yyyy' }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

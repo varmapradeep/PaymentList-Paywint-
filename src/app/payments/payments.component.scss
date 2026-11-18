@@ -1,0 +1,24 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.status-completed { color: #5fd38d; }
+.status-pending   { color: #f0b429; } 
+.status-failed    { color: #f26d6d; } 
+.status-refunded  { color: #9a9a9a; }  
